@@ -264,8 +264,6 @@ module.exports = (app) => {
           }
           return [obj];
         }
-
-        // pending logic for diff month
         return [];
       }
 

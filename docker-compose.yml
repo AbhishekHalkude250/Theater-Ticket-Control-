@@ -1,0 +1,35 @@
+version: "3"
+services:
+  elastic7:
+    container_name: elastic7
+    image: amazon/opendistro-for-elasticsearch:1.9.0
+    ports:
+      - "9200:9200"
+    environment:
+      - cluster.name=bussrcluster
+      - discovery-type=single-node
+      - discovery.seed_hosts=0.0.0.0:9300
+      - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536 # maximum number of open files for the Elasticsearch user, set to at least 65536 on modern systems
+        hard: 65536
+    volumes:
+      - ./custom-elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+  app:
+    container_name: bussr-ttms
+    restart: always
+    depends_on:
+     - elastic7
+    build: .
+    ports:
+      - "4040:4040"
+    links:
+      - elastic7
+    environment:
+      WAIT_HOSTS: elastic7:9200
+      ELASTICSEARCH_URL: http://elastic7:9200

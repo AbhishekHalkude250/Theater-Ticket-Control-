@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
-    "node": ">=6"
+    "node": ">=10.19.0"
   },
+  "author": "Abhishek Naganath Halkude <abhishek.halkude750@gmail.com>",
   "scripts": {
     "test": "node_modules/.bin/jest",
     "test:coverage": "node_modules/.bin/jest --coverage",
