@@ -1,0 +1,21 @@
+{
+    "name": "analytics",
+    "base": "Model",
+    "idInjection": true,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "from": {
+        "type": "date"
+      },
+      "to": {
+        "type": "date",
+        "id": true
+      }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+  }

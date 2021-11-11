@@ -1,0 +1,75 @@
+{
+    "ticketResponse": [
+        {
+            "id": "8_MlCn0BiIx3pl9mA0bO",
+            "creation_date": "2021-11-10T13:58:57.733Z",
+            "performance_time": "2021-12-10T13:52:20.373Z",
+            "customer_name": "string",
+            "performance_title": "string",
+            "ticket_price": 0,
+            "docType": "ticket"
+        },
+        {
+            "id": "8vMlCn0BiIx3pl9mAEY9",
+            "creation_date": "2021-11-10T13:58:56.819Z",
+            "performance_time": "2021-12-10T13:52:20.373Z",
+            "customer_name": "string",
+            "performance_title": "string",
+            "ticket_price": 0,
+            "docType": "ticket"
+        }
+    ],
+    "payload": {
+        "creation_date": "2021-08-25T14:25:20.540Z",
+        "performance_time": "2021-11-10T14:25:20.540Z",
+        "customer_name": "string",
+        "performance_title": "string",
+        "ticket_price": 120
+    },
+    "ticketCreation": {
+        "result": {
+            "id": "k1TIDX0BMX3e8sCK3f8Z",
+            "creation_date": "2021-08-25T14:25:20.540Z",
+            "performance_time": "2021-11-10T14:25:20.540Z",
+            "customer_name": "string",
+            "performance_title": "string",
+            "ticket_price": 120
+        }
+    },
+    "singelTicket": {
+        "id": "8_MlCn0BiIx3pl9mA0bO",
+        "creation_date": "2021-11-10T13:58:57.733Z",
+        "performance_time": "2021-12-10T13:52:20.373Z",
+        "customer_name": "string",
+        "performance_title": "string",
+        "ticket_price": 0,
+        "docType": "ticket"
+    },
+    "updateTicket": {
+        "creation_date": "2021-11-10T13:58:57.733Z",
+        "performance_time": "2021-12-10T13:52:20.373Z",
+        "customer_name": "string",
+        "performance_title": "string",
+        "ticket_price": 0,
+        "docType": "ticket"
+    },
+    "deleteResponse": {
+        "result": {
+            "took": 661,
+            "timed_out": false,
+            "total": 1,
+            "deleted": 1,
+            "batches": 1,
+            "version_conflicts": 0,
+            "noops": 0,
+            "retries": {
+                "bulk": 0,
+                "search": 0
+            },
+            "throttled_millis": 0,
+            "requests_per_second": -1,
+            "throttled_until_millis": 0,
+            "failures": []
+        }
+    }
+}

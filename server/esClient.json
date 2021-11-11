@@ -1,0 +1,12 @@
+{
+  "nodes": ["http://127.0.0.1:9200"],
+  "ssl": {
+    "rejectUnauthorized": false
+  },
+  "agent": {
+    "maxSockets": 1,
+    "keepAlive": false
+  },
+  "requestTimeout": 30000,
+  "pingTimeout": 3000
+}

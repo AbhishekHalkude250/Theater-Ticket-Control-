@@ -1,0 +1,70 @@
+{
+    "name": "ticket",
+    "plural": "ticket",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+      "validateUpsert": true,
+      "supportedContentTypes": ["application/json"]
+    },
+    "mixins": {
+    },
+    "replaceOnPUT": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "id": true
+      },
+      "creation_date": {
+        "type": "date"
+      },
+      "performance_time": {        
+        "type": "date"
+      },
+      "customer_name": {
+        "type": "string"
+      },
+      "performance_title": {
+        "type": "string",
+        "required": true
+      },
+      "ticket_price": {
+        "type": "number",
+        "required": true
+      }
+    },
+    "validations": [],
+    "relations": {
+      "organization": {
+        "type": "belongsTo",
+        "model": "Organization",
+        "foreignKey": "tenantId",
+        "options": {
+          "nestRemoting": false
+        }
+      },
+      "role": {
+        "type": "belongsTo",
+        "model": "DerivedRole",
+        "foreignKey": "roleId",
+        "options": {
+          "nestRemoting": false
+        }
+      },
+      "groups": {
+        "type": "hasMany",
+        "model": "Group",
+        "foreignKey": "userId",
+        "through": "GroupMember",
+        "keyThrough": "groupId"
+      },
+      "department": {
+        "type": "belongsTo",
+        "model": "Department",
+        "foreignKey": "departmentId"
+      }
+    },
+    "acls": [],
+    "methods": {}
+  }
+  

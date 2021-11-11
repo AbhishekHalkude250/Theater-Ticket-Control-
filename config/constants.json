@@ -1,0 +1,5 @@
+{
+  "ElasticIndexesByDatasource": {
+    "ticketIndex": "ticket"
+  }
+}

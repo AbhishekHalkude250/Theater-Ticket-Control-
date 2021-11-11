@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ss.md</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#theater-ticket-control">Theater-Ticket-Control</a>
+<ul>
+<li><a href="#techonlogies-used">Techonlogies Used</a></li>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#how-to-run-the-application">How to run the application?</a></li>
+<li><a href="#how-to-execute-unit-test-cases">How to execute unit test cases</a></li>
+<li><a href="#application">Application</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="theater-ticket-control">Theater-Ticket-Control</h1>
+<h2 id="techonlogies-used">Techonlogies Used</h2>
+<ul>
+<li>NodeJs (10.19.x), JavaScript, Loopback 3.x (NodeJs Framework), Elastic-Search(7.13.x)</li>
+</ul>
+<h2 id="prerequisite">Prerequisite</h2>
+<ol>
+<li>Elastic-Search</li>
+</ol>
+<ul>
+<li>
+<p>should have elastic-search version above 7.13.x</p>
+</li>
+<li>
+<p>Link to download elastic-search <a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a></p>
+</li>
+<li>
+<p>how to run elastic-search</p>
+</li>
+<li>
+<p>Go the main folder, then <code>cd /elasticsearch-7.13.2/elasticsearch-7.13.2/bin</code></p>
+</li>
+<li>
+<p>then run using command <code>./elasticsearch</code></p>
+</li>
+</ul>
+<h2 id="how-to-run-the-application">How to run the application?</h2>
+<ol>
+<li>
+<p>First run elastic-search using above commands</p>
+</li>
+<li>
+<p>then visit project main folder <code>Theater-Ticket-Control</code>using command <code>cd Theater-Ticket-Control</code> and then run below commands</p>
+</li>
+<li>
+<p>Install node modules using command <code>npm install</code></p>
+</li>
+<li>
+<p>then run the application using command<code>node .</code></p>
+</li>
+<li>
+<p>once application is up, visit <code>http://localhost:4040/explorer</code></p>
+</li>
+</ol>
+<p>to explore apis swagger for ticket model</p>
+<h2 id="how-to-execute-unit-test-cases">How to execute unit test cases</h2>
+<p>i) use below command,</p>
+<p><code>npm run test</code></p>
+<h2 id="application">Application</h2>
+<ol>
+<li>
+<p>Backend application hase been developed using <code>Loopback 3.x</code>framework, <code>Elastic-search</code> has been used as a database.</p>
+</li>
+<li>
+<p>Application contains <code>CRUD</code> operation for ticket.</p>
+</li>
+<li>
+<p>Application have 2 more apis, which has been used to analyse no of customer visited to our show per month also amount of money earned using ticket selling per month which have two more pattern to retrieve the infromation</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>js algorithm</p>
+</li>
+<li>
+<p>aggregation</p>
+</li>
+</ul>
+<p>i) js algorithm contains custom logic to retrieve data</p>
+<p>ii) aggregation contain <code>aggregation query</code>, to retrieve data</p>
+<ol start="4">
+<li>Application has<code>middleware</code> which has been used to check valid token. follow below path to find out <code>authorization</code> validation</li>
+</ol>
+<p><code>main-folder/server/middleware/enforce-auth.js</code></p>
+<ol start="5">
+<li>
+<p>Application contains <code>Unit-test cases</code> for crud operation. having success and failure coverage.</p>
+</li>
+<li>
+<p>Follow below path to find <code>custom logic</code> for apis</p>
+</li>
+</ol>
+<p><code>main-folder/server/boot/controllers/ticket.js</code></p>
+<ol start="7">
+<li>Also have attached API swagger doc. follow <code>doc/ticket.html</code> to findout api documentation.</li>
+</ol>
+
+    </div>
+  </div>
+</body>
+
+</html>

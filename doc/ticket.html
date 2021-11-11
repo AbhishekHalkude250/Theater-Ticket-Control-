@@ -1,0 +1,545 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ticket.md</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#ticket-apis">Ticket APIs</a>
+<ul>
+<li><a href="#index">INDEX</a></li>
+<li><a href="#schema">Schema</a></li>
+<li><a href="#post-ticketgenerate">POST /ticket/generate</a></li>
+<li><a href="#get-ticketall">GET /ticket/all</a></li>
+<li><a href="#put-ticketshowid">PUT /ticket/show/{id}</a></li>
+<li><a href="#delete--ticketid">DELETE  /ticket/{id}</a></li>
+<li><a href="#post-ticketanalyticsearned">POST /ticket/analytics/earned</a></li>
+<li><a href="#post-ticketanalyticsvisited">POST /ticket/analytics/visited</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="ticket-apis">Ticket APIs</h1>
+<p><strong>Description</strong>: Describes different apis for ticket</p>
+<h2 id="index">INDEX</h2>
+<p><a href="#schema">Model Schema</a><br>
+<a href="#post-ticketgenerate">Create New Ticket</a><br>
+<a href="#get-ticketall">Get Tickets</a><br>
+<a href="#put-ticketshowid">Update by Id</a><br>
+<a href="#delete-ticketid">Delete Ticket by Id</a><br>
+<a href="#post-ticketanalyticsearned">Get money earned by date</a><br>
+<a href="#post-ticketanalyticsvisited">Get customer visited  by date</a></p>
+<h2 id="schema">Schema</h2>
+
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Datatype</th>
+<th>Description</th>
+<th>Constrains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>creation_date</td>
+<td>date</td>
+<td>created date and time</td>
+<td>-</td>
+</tr>
+<tr>
+<td>performance_time</td>
+<td>date</td>
+<td>movie time</td>
+<td>-</td>
+</tr>
+<tr>
+<td>customer_name</td>
+<td>string</td>
+<td>name of customer</td>
+<td>-</td>
+</tr>
+<tr>
+<td>performance_title</td>
+<td>date</td>
+<td>movie time</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ticket_price</td>
+<td>date</td>
+<td>price of ticket</td>
+<td>-</td>
+</tr>
+</tbody>
+</table><h2 id="post-ticketgenerate">POST /ticket/generate</h2>
+<p><strong>Description:</strong> Create a new movie ticket</p>
+<p><strong>Authorization:</strong> Required</p>
+<p><strong>Sample Payload</strong>:</p>
+<pre><code>{
+  "performance_time": "2021-11-11T09:53:27.348Z",
+  "customer_name": "string",
+  "performance_title": "string",
+  "ticket_price": 0
+}
+</code></pre>
+<p><strong>Payload</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Required</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>performance_time</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>customer_name</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>performance_title</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>ticket_price</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>creation_date</td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table><p><strong>Response</strong>:</p>
+<p><strong>200</strong>: Request was successful</p>
+<pre><code>{
+  "result": {
+    "id": "paSCDn0BDETBOi5aZEWZ",
+    "performance_time": "2021-11-11T09:53:27.348Z",
+    "customer_name": "string",
+    "performance_title": "string",
+    "ticket_price": 0
+  }
+}
+</code></pre>
+<p><strong>401</strong>: Error: Unauthorized</p>
+<pre><code>{
+	"fault": {
+		"code": 900902,
+		"message": "Authorization required"
+}
+</code></pre>
+<h2 id="get-ticketall">GET /ticket/all</h2>
+<p><strong>Description:</strong> Get list tickets</p>
+<p><strong>Authentication:</strong></p>
+<p><strong>Authorization:</strong> Required</p>
+<p><strong>Parameters</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query</td>
+<td>filter</td>
+<td>query filter</td>
+<td><code>{"where": {"customer_name": "abhi"}}</code></td>
+<td>No</td>
+</tr>
+</tbody>
+</table><p><strong>Response</strong>:</p>
+<p><strong>200</strong>: Request was successful</p>
+<pre><code>[
+  {
+    "id": "w123",
+    "creation_date": "2021-11-09T16:22:53.581Z",
+    "performance_time": "2021-11-10T16:22:53.581Z",
+    "customer_name": "qqqq",
+    "performance_title": "katrina",
+    "ticket_price": 250,
+    "docType": "ticket",
+    "_search_after": [],
+    "_total_count": 28
+  },
+  {
+    "id": "7vMjCn0BiIx3pl9m2EZU",
+    "creation_date": "2021-12-10T13:52:20.373Z",
+    "performance_time": "2021-12-10T13:52:20.373Z",
+    "customer_name": "string",
+    "performance_title": "string",
+    "ticket_price": 0,
+    "docType": "ticket",
+    "_search_after": [],
+    "_total_count": 28
+  }
+]
+</code></pre>
+<p><strong>401</strong>: Error: Unauthorized</p>
+<pre><code>{
+	"fault": {
+		"code": 900902,
+		"message": "Authorization required"
+}
+</code></pre>
+<h2 id="put-ticketshowid">PUT /ticket/show/{id}</h2>
+<p>**Description:**update ticket</p>
+<p><strong>Authorization:</strong> Required</p>
+<p><strong>Parameters</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example</th>
+<th>Required</th>
+<th>contrains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query</td>
+<td>method</td>
+<td>type of method</td>
+<td><code>js</code></td>
+<td>Yes</td>
+<td>Two methods allowed, aggregation and js</td>
+</tr>
+</tbody>
+</table><p><strong>Sample Payload</strong>:</p>
+<pre><code>{
+  "performance_time": "2021-11-11T09:53:27.348Z",
+  "customer_name": "string",
+  "performance_title": "string",
+  "ticket_price": 0
+}
+</code></pre>
+<p><strong>Response</strong>:</p>
+<p><strong>200</strong>: Request was successful</p>
+<pre><code>{
+  "result": {
+    "id": "7vMjCn0BiIx3pl9m2EZU",
+    "creation_date": "2021-12-10T13:52:20.373Z",
+    "performance_time": "2021-12-10T13:52:20.373Z",
+    "customer_name": "string",
+    "performance_title": "string",
+    "ticket_price": 0,
+    "docType": "ticket"
+  }
+}
+</code></pre>
+<p><strong>401</strong>: Error: Unauthorized</p>
+<pre><code>{
+	"fault": {
+		"code": 900902,
+		"message": "Authorization required"
+}
+</code></pre>
+<h2 id="delete--ticketid">DELETE  /ticket/{id}</h2>
+<p><strong>Description:</strong> Delete ticket</p>
+<p><strong>Authorization:</strong> Required</p>
+<p><strong>Parameters</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Path</td>
+<td>id</td>
+<td>id of ticket</td>
+<td><code>7vMjCn0BiIx3pl9m2EZU</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table><p><strong>Response</strong>:</p>
+<p><strong>200</strong>: Request was successful</p>
+<pre><code>{
+	"took": 30,
+	"timed_out": false,
+	"total": 1,
+	"deleted": 1,
+	"batches": 1,
+	"version_conflicts": 0,
+	"noops": 0,
+	"retries": {
+		"bulk": 0,
+		"search": 0
+	},
+	"throttled_millis": 0,
+	"requests_per_second": -1,
+	"throttled_until_millis": 0,
+	"failures": []
+}
+</code></pre>
+<p><strong>401</strong>: Error: Unauthorized</p>
+<pre><code>{
+	"fault": {
+		"code": 900902,
+		"message": "Authorization required"
+}
+</code></pre>
+<h2 id="post-ticketanalyticsearned">POST /ticket/analytics/earned</h2>
+<p><strong>Description:</strong> Get money earned per month</p>
+<p><strong>Authorization:</strong> Required</p>
+<p><strong>Parameters</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>method</td>
+<td>method</td>
+<td><code>js</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>data</td>
+<td>updated fields data</td>
+<td><code>{"from":"2021-11-11T09:53:27.332Z","to":"2021-11-11T09:53:27.332Z"}</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table><p><strong>Payload</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Required</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>from</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>to</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table><p><strong>Response</strong>:</p>
+<p><strong>200</strong>: Request was successful</p>
+<pre><code>[
+  {
+    "month": "January",
+    "summaryProfit": 50
+  },
+  {
+    "month": "February",
+    "summaryProfit": 90
+  },
+  {
+    "month": "March",
+    "summaryProfit": 120
+  },
+  {
+    "month": "April",
+    "summaryProfit": 0
+  },
+  {
+    "month": "May",
+    "summaryProfit": 0
+  },
+  {
+    "month": "June",
+    "summaryProfit": 0
+  },
+  {
+    "month": "July",
+    "summaryProfit": 0
+  },
+  {
+    "month": "August",
+    "summaryProfit": 360
+  },
+  {
+    "month": "September",
+    "summaryProfit": 140
+  },
+  {
+    "month": "October",
+    "summaryProfit": 0
+  },
+  {
+    "month": "November",
+    "summaryProfit": 250
+  }
+]
+</code></pre>
+<p><strong>401</strong>: Error: Unauthorized</p>
+<pre><code>{
+	"fault": {
+		"code": 900902,
+		"message": "Authorization required"
+}
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<h2 id="post-ticketanalyticsvisited">POST /ticket/analytics/visited</h2>
+<p><strong>Description:</strong> get customer visited</p>
+<p><strong>Authorization:</strong> Required</p>
+<p><strong>Parameters</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>method</td>
+<td>method</td>
+<td><code>js</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>data</td>
+<td>updated fields data</td>
+<td><code>{"from":"2021-11-11T09:53:27.332Z","to":"2021-11-11T09:53:27.332Z"}</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table><p><strong>Payload</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Required</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>from</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>to</td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table><p><strong>Response</strong>:</p>
+<p><strong>200</strong>: Request was successful</p>
+<pre><code>[
+  {
+    "month": "January",
+    "summaryVisits": 5
+  },
+  {
+    "month": "February",
+    "summaryVisits": 2
+  },
+  {
+    "month": "March",
+    "summaryVisits": 1
+  },
+  {
+    "month": "April",
+    "summaryVisits": 0
+  },
+  {
+    "month": "May",
+    "summaryVisits": 0
+  },
+  {
+    "month": "June",
+    "summaryVisits": 0
+  },
+  {
+    "month": "July",
+    "summaryVisits": 0
+  },
+  {
+    "month": "August",
+    "summaryVisits": 3
+  },
+  {
+    "month": "September",
+    "summaryVisits": 2
+  },
+  {
+    "month": "October",
+    "summaryVisits": 0
+  },
+  {
+    "month": "November",
+    "summaryVisits": 12
+  }
+]
+</code></pre>
+<p><strong>401</strong>: Error: Unauthorized</p>
+<pre><code>{
+	"fault": {
+		"code": 900902,
+		"message": "Authorization required"
+}
+</code></pre>
+
+    </div>
+  </div>
+</body>
+
+</html>

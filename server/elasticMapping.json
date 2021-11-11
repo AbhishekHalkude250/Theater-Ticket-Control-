@@ -1,0 +1,28 @@
+{
+  "ticketIndex": {
+    "id": {
+      "type": "keyword",
+      "index": true
+    },
+    "creation_date": {
+      "type": "date",
+      "index": true
+    },
+    "performance_time": {
+      "type": "date",
+      "index": true
+    },
+    "customer_name": {
+      "type": "keyword",
+      "index": true
+    },
+    "performance_title": {
+      "type": "keyword",
+      "index": false
+    },
+    "ticket_price": {
+      "type": "float",
+      "index": true
+    }
+  }
+}
